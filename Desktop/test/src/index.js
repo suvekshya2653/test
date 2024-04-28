@@ -3,10 +3,15 @@ const app = express();
 
 const PORT = 9000;
 
+app.use(express.json());
+
 app.get('/', (request,response) => {
-    response.json({message: 'Hello world'});
+
+    const { name } = request.body;
+
+    response.json({message: `Hello ${name}`});
 });
 
-app.listen(PORT, () => {
-    console.log(`the server is run on ${PORT}`);
+app.listen(PORT, () => {          
+    console.log(` Server is run on ${PORT}`);
 })
